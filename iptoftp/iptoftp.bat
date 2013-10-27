@@ -1,1 +1,1 @@
-D:\Tools\R\R-3.0.2\bin\R.exe CMD BATCH ip_save.R
+D:\Tools\R\R-3.0.2\bin\R.exe CMD BATCH iptoftp.R
