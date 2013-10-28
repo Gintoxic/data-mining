@@ -22,7 +22,7 @@ close(fileConn)
 
 # TXT per FTP hochladen
 ftpUpload(fileName,
-          "ftp://harschack.de/server1.txt",
+          "ftp://basicreports.de/server1.txt",
           userpwd = paste(credentials["ftp-info","user"],":",credentials["ftp-info","pass"], sep=""))
 
 # temp. Datei löschen
