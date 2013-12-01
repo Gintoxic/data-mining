@@ -1,5 +1,8 @@
 library(RODBC)
 
+#setwd("D:/Work/data-mining")
+getwd()
+
 qFile<-"database/routes_source_dest.sql"
 myQuery<-paste(scan(qFile, what="", sep="\n"), collapse="\n")
 
@@ -14,7 +17,8 @@ print(laufzeit)
 source_ind<-which(res$source_country=="Germany")
 dest_ind<-which(res$dest_country=="Germany")
 
-d<-sort(table(res$dest_iata[dest_ind]), decreasing=T)[1:20]
+d<-sort(table(res$dest_iata[dest_ind]), decreasing=T)[1:30]
+names(d)
 mids<-barplot(d)
 text(mids, d, 1:20, pos=1)
 
