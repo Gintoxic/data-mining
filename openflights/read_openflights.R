@@ -1,7 +1,7 @@
 ###AIRPORTS
 
 inputFileName<-"../data/openflights/data/airports.dat"
-airportsImport<-read.table(inputFileName, sep=",")
+airportsImport<-read.table(inputFileName, sep=",", encoding="UTF-8")
 #str(airportsImport)
 
 airport_id<-(airportsImport$V1)
@@ -26,7 +26,7 @@ str(airports)
 
 ##### AIRLINES
 inputFileName<-"../data/openflights/data/airlines.dat"
-airlinesImport<-read.table(inputFileName, sep=",")
+airlinesImport<-read.table(inputFileName, sep=",",encoding="UTF-8")
 str(airlinesImport)
 
 airline_id<-airlinesImport$V1
@@ -44,7 +44,7 @@ str(airlines)
 
 ####### ROUTES
 inputFileName<-"../data/openflights/data/routes.dat"
-routesImport<-read.table(inputFileName, sep=",")
+routesImport<-read.table(inputFileName, sep=",",encoding="UTF-8")
 
 
 str(routesImport)
