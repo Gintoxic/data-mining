@@ -68,19 +68,19 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;03&#x2f;31 11&#x3a;31&#x3a;56.802</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;03&#x2f;31 13&#x3a;18&#x3a;37.477</modified_date>
+  <modified_date>2014&#x2f;04&#x2f;13 16&#x3a;42&#x3a;44.182</modified_date>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>postgres</name>
+    <name>staging</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
-    <database>postgres</database>
+    <database>flightrefund</database>
     <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2cdecc0ba07f3808ba409ab628cc2fe89</password>
+    <username>staging</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb0aba71d99ba1dd</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -111,7 +111,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>D&#x3a;&#x5c;Work&#x5c;data&#x5c;testdaten1&#x5c;Testdatensatz_Forderungsmanagement_single.csv</filename>
+    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;customers&#x5c;bayer&#x5c;testdatensatz1&#x5c;Testdatensatz_Forderungsmanagement_single.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -744,7 +744,7 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Aufzeichnungsschl&#xfc;ssel</name>
-        <rename/>
+        <rename>Aufzeichnungsschluessel</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>GCN</name>
@@ -784,15 +784,15 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>ID des Buchungsberaters</name>
-        <rename/>
+        <rename>ID_des_Buchungsberaters</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Begr&#xfc;ndungscode Flug global</name>
-        <rename/>
+        <rename>Begruendungscode_Flug</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Begr&#xfc;ndungscode-Beschreibung Flug global</name>
-        <rename/>
+        <rename>Begruendungscode_Besch_Flug</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Kreditkartennummer</name>
@@ -804,7 +804,7 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Ablaufdatum der Kreditkarte</name>
-        <rename/>
+        <rename>Ablaufdatum_der_Kreditkarte</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Erstattungsindikator</name>
@@ -816,15 +816,15 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Anzahl</name>
-        <rename/>
+        <rename>Teilstrecke_Anzahl</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Urspr&#xfc;ngliche Dokumentnummer</name>
-        <rename/>
+        <rename>Urspruengliche_Dokumentnummer</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Int. Inl.</name>
-        <rename/>
+        <rename>Int_Inl</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Reisesektor</name>
@@ -832,7 +832,7 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>POS Land</name>
-        <rename/>
+        <rename>POS_Land</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Reisedauer</name>
@@ -844,7 +844,7 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Zeit der Abreise</name>
-        <rename/>
+        <rename>Zeit_der_Abreise</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Ankunftsdatum</name>
@@ -864,67 +864,67 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Flugdauer</name>
-        <rename/>
+        <rename>Teilstrecke_Flugdauer</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Code Transportunternehmen</name>
-        <rename/>
+        <rename>Teilstrecke_Code_Transportunternehmen</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Name Transportunternehmen</name>
-        <rename/>
+        <rename>Teilstrecke_Name_Transportunternehmen</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Origin Airport Code</name>
-        <rename/>
+        <rename>Segment_Origin_Airport_Code</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Origin Airport Name</name>
-        <rename/>
+        <rename>Segment_Origin_Airport_Name</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Code Herkunftsland</name>
-        <rename/>
+        <rename>Teilstrecke_Code_Herkunftsland</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Name Herkunftsland</name>
-        <rename/>
+        <rename>Teilstrecke_Name_Herkunftsland</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Origin Region Name</name>
-        <rename/>
+        <rename>Segment_Origin_Region_Name</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Destination Airport Code</name>
-        <rename/>
+        <rename>Segment_Destination_Airport_Code</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Destination Airport Name</name>
-        <rename/>
+        <rename>Segment_Destination_Airport_Name</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Code Zielland</name>
-        <rename/>
+        <rename>Teilstrecke_Code_Zielland</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Teilstrecke Name Zielland</name>
-        <rename/>
+        <rename>Teilstrecke_Name_Zielland</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Destination Region Name</name>
-        <rename/>
+        <rename>Segment_Destination_Region_Name</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Vollst&#xe4;ndige Ticket-Reiseroute</name>
-        <rename/>
+        <rename>Vollstaendige_Ticket_Reiseroute</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Direktionale Teilstrecke</name>
-        <rename/>
+        <rename>Direktionale_Teilstrecke</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Bidirektionale Teilstrecke</name>
-        <rename/>
+        <rename>Bidirektionale_Teilstrecke</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Tarifbasis</name>
@@ -940,19 +940,19 @@
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Distance&#x28;Miles&#x29;</name>
-        <rename/>
+        <rename>Segment_Distance_Miles</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Cost Per Miles&#x28;EUR&#x29;</name>
-        <rename/>
+        <rename>Segment_Cost_Per_Miles_EUR</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Segment Fare Excluding Taxes&#x28;EUR&#x29;</name>
-        <rename/>
+        <rename>Segment_Fare_Excluding_Taxes_EUR</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>      <field>        <name>Calculated Segment Fare Including Taxes&#x28;EUR&#x29;</name>
-        <rename/>
+        <rename>Calculated_Segment_Fare_Including_Taxes_EUR</rename>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
@@ -975,9 +975,9 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>postgres</connection>
-    <schema/>
-    <table>c_bayer_test2</table>
+    <connection>staging</connection>
+    <schema>staging</schema>
+    <table>c_bayer_test</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
