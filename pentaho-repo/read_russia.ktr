@@ -1,10 +1,11 @@
 <transformation>
   <info>
-    <name>read_flights_2013</name>
+    <name>read_russia</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -65,9 +66,9 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;04&#x2f;12 22&#x3a;48&#x3a;20.398</created_date>
+  <created_date>2014&#x2f;04&#x2f;14 22&#x3a;59&#x3a;41.639</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;04&#x2f;14 20&#x3a;18&#x3a;01.951</modified_date>
+  <modified_date>2014&#x2f;04&#x2f;14 23&#x3a;14&#x3a;52.147</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -96,8 +97,9 @@
     </attributes>
   </connection>
   <order>
+  <hop> <from>CSV file input</from><to>Add sequence</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values</from><to>Table output</to><enabled>Y</enabled> </hop>
-  <hop> <from>CSV file input</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add sequence</from><to>Select values</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>CSV file input</name>
@@ -110,11 +112,11 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;flightaware&#x5c;2013&#x5c;FlightAware_European_delays_harschack.csv</filename>
+    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;customers&#x5c;20140414_russland&#x5c;Q4 flights from Germany Renamed.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
-    <separator>,</separator>
+    <separator>&#x3b;</separator>
     <enclosure>&#x22;</enclosure>
     <header>Y</header>
     <buffer_size>50000</buffer_size>
@@ -122,10 +124,10 @@
     <add_filename_result>N</add_filename_result>
     <parallel>N</parallel>
     <newline_possible>N</newline_possible>
-    <encoding/>
+    <encoding>UTF-8</encoding>
     <fields>
       <field>
-        <name>Ident</name>
+        <name>airline_iata</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -136,7 +138,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Registration</name>
+        <name>flightnumber</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -147,7 +149,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Code Shares</name>
+        <name>airline_name</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -158,7 +160,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Aircraft Type</name>
+        <name>origin_name</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -169,7 +171,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Origin &#x28;ICAO&#x29;</name>
+        <name>origin_city</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -180,7 +182,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Origin Name</name>
+        <name>dest_name</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -191,7 +193,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Origin City</name>
+        <name>dest_city</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -202,7 +204,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Destination &#x28;ICAO&#x29;</name>
+        <name>dep_date</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -213,7 +215,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Destination Name</name>
+        <name>dep_time</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -224,7 +226,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Destination City</name>
+        <name>arr_date</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -235,18 +237,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Direct Distance &#x28;nm&#x29;</name>
-        <type>Integer</type>
-        <format>&#x23;</format>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>15</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Origin Gate</name>
+        <name>arr_time</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -257,117 +248,7 @@
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>Destination Gate</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Scheduled Departure Time</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>UTC</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Scheduled Arrival Time</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>UTC</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Actual Departure Time</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>UTC</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Actual Arrival Time</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>UTC</name>
-        <type>String</type>
-        <format/>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>255</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Enroute</name>
-        <type>Integer</type>
-        <format>&#x23;</format>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>15</length>
-        <precision>-1</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>Cancelled</name>
+        <name>link_print_date</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
@@ -380,8 +261,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>75</xloc>
-      <yloc>103</yloc>
+      <xloc>182</xloc>
+      <yloc>138</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -397,103 +278,63 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>Ident</name>
-        <rename>ident</rename>
+    <fields>      <field>        <name>cd_id</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Registration</name>
-        <rename>registration</rename>
+      </field>      <field>        <name>airline_iata</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Code Shares</name>
-        <rename>code_shares</rename>
+      </field>      <field>        <name>flightnumber</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Aircraft Type</name>
-        <rename>aircraft_type</rename>
+      </field>      <field>        <name>airline_name</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Origin &#x28;ICAO&#x29;</name>
-        <rename>origin_icao</rename>
+      </field>      <field>        <name>origin_name</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Origin Name</name>
-        <rename>origin_name</rename>
+      </field>      <field>        <name>origin_city</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Origin City</name>
-        <rename>origin_city</rename>
+      </field>      <field>        <name>dest_name</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Destination &#x28;ICAO&#x29;</name>
-        <rename>dest_icao</rename>
+      </field>      <field>        <name>dest_city</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Destination Name</name>
-        <rename>dest_name</rename>
+      </field>      <field>        <name>dep_date</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Destination City</name>
-        <rename>dest_city</rename>
+      </field>      <field>        <name>dep_time</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Direct Distance &#x28;nm&#x29;</name>
-        <rename>distance</rename>
+      </field>      <field>        <name>arr_date</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Origin Gate</name>
-        <rename>origin_gate</rename>
+      </field>      <field>        <name>arr_time</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>Destination Gate</name>
-        <rename>dest_gate</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Scheduled Departure Time</name>
-        <rename>dep_sched_local</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>UTC</name>
-        <rename>dep_sched_utc</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Scheduled Arrival Time</name>
-        <rename>arr_sched_local</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>UTC_1</name>
-        <rename>arr_sched_utc</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Actual Departure Time</name>
-        <rename>dep_act_local</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>UTC_2</name>
-        <rename>dep_act_utc</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Actual Arrival Time</name>
-        <rename>arr_act_local</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>UTC_3</name>
-        <rename>arr_act_utc</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Enroute</name>
-        <rename>enroute</rename>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>Cancelled</name>
-        <rename>cancelled</rename>
+      </field>      <field>        <name>link_print_date</name>
+        <rename/>
         <length>-2</length>
         <precision>-2</precision>
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>238</xloc>
-      <yloc>101</yloc>
+      <xloc>367</xloc>
+      <yloc>136</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -511,11 +352,11 @@
            </partitioning>
     <connection>staging</connection>
     <schema>staging</schema>
-    <table>fa_flights_2013</table>
+    <table>cd_russia_test</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
-    <use_batch>N</use_batch>
+    <use_batch>Y</use_batch>
     <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
@@ -524,28 +365,24 @@
     <tablename_in_field>N</tablename_in_field>
     <tablename_field/>
     <tablename_in_table>Y</tablename_in_table>
-    <return_keys>Y</return_keys>
-    <return_field>flight_id</return_field>
+    <return_keys>N</return_keys>
+    <return_field/>
     <fields>
         <field>
-          <column_name>ident</column_name>
-          <stream_name>ident</stream_name>
+          <column_name>cd_id</column_name>
+          <stream_name>cd_id</stream_name>
         </field>
         <field>
-          <column_name>registration</column_name>
-          <stream_name>registration</stream_name>
+          <column_name>airline_iata</column_name>
+          <stream_name>airline_iata</stream_name>
         </field>
         <field>
-          <column_name>code_shares</column_name>
-          <stream_name>code_shares</stream_name>
+          <column_name>flightnumber</column_name>
+          <stream_name>flightnumber</stream_name>
         </field>
         <field>
-          <column_name>aircraft_type</column_name>
-          <stream_name>aircraft_type</stream_name>
-        </field>
-        <field>
-          <column_name>origin_icao</column_name>
-          <stream_name>origin_icao</stream_name>
+          <column_name>airline_name</column_name>
+          <stream_name>airline_name</stream_name>
         </field>
         <field>
           <column_name>origin_name</column_name>
@@ -556,10 +393,6 @@
           <stream_name>origin_city</stream_name>
         </field>
         <field>
-          <column_name>dest_icao</column_name>
-          <stream_name>dest_icao</stream_name>
-        </field>
-        <field>
           <column_name>dest_name</column_name>
           <stream_name>dest_name</stream_name>
         </field>
@@ -568,62 +401,59 @@
           <stream_name>dest_city</stream_name>
         </field>
         <field>
-          <column_name>distance</column_name>
-          <stream_name>distance</stream_name>
+          <column_name>dep_date</column_name>
+          <stream_name>dep_date</stream_name>
         </field>
         <field>
-          <column_name>origin_gate</column_name>
-          <stream_name>origin_gate</stream_name>
+          <column_name>dep_time</column_name>
+          <stream_name>dep_time</stream_name>
         </field>
         <field>
-          <column_name>dest_gate</column_name>
-          <stream_name>dest_gate</stream_name>
+          <column_name>arr_date</column_name>
+          <stream_name>arr_date</stream_name>
         </field>
         <field>
-          <column_name>dep_sched_local</column_name>
-          <stream_name>dep_sched_local</stream_name>
+          <column_name>arr_time</column_name>
+          <stream_name>arr_time</stream_name>
         </field>
         <field>
-          <column_name>dep_sched_utc</column_name>
-          <stream_name>dep_sched_utc</stream_name>
-        </field>
-        <field>
-          <column_name>arr_sched_local</column_name>
-          <stream_name>arr_sched_local</stream_name>
-        </field>
-        <field>
-          <column_name>arr_sched_utc</column_name>
-          <stream_name>arr_sched_utc</stream_name>
-        </field>
-        <field>
-          <column_name>dep_act_local</column_name>
-          <stream_name>dep_act_local</stream_name>
-        </field>
-        <field>
-          <column_name>dep_act_utc</column_name>
-          <stream_name>dep_act_utc</stream_name>
-        </field>
-        <field>
-          <column_name>arr_act_local</column_name>
-          <stream_name>arr_act_local</stream_name>
-        </field>
-        <field>
-          <column_name>arr_act_utc</column_name>
-          <stream_name>arr_act_utc</stream_name>
-        </field>
-        <field>
-          <column_name>enroute</column_name>
-          <stream_name>enroute</stream_name>
-        </field>
-        <field>
-          <column_name>cancelled</column_name>
-          <stream_name>cancelled</stream_name>
+          <column_name>link_print_date</column_name>
+          <stream_name>link_print_date</stream_name>
         </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>403</xloc>
-      <yloc>98</yloc>
+      <xloc>498</xloc>
+      <yloc>172</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add sequence</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>cd_id</valuename>
+      <use_database>N</use_database>
+      <connection>staging</connection>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>2000000</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>274</xloc>
+      <yloc>239</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

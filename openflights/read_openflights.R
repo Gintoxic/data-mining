@@ -16,7 +16,7 @@ airports$iata<-as.character(airportsImport$V5)
 airports$icao<-as.character(airportsImport$V6)
 class(airportsImport$V7)
 
-airports$latitutde<-airportsImport$V7
+airports$latitude<-airportsImport$V7
 airports$longitude<-airportsImport$V8
 airports$altitude_feet<-airportsImport$V9
 airports$timezone<-airportsImport$V10

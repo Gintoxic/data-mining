@@ -65,4 +65,4 @@ for (i in 1:len)
 }
 
 myFrame[1:10,]
-
+save("myFrame", file="distBayer.Rdata")

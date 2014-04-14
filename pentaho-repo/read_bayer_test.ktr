@@ -68,7 +68,7 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;03&#x2f;31 11&#x3a;31&#x3a;56.802</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;04&#x2f;13 16&#x3a;42&#x3a;44.182</modified_date>
+  <modified_date>2014&#x2f;04&#x2f;14 21&#x3a;16&#x3a;10.305</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -97,8 +97,9 @@
     </attributes>
   </connection>
   <order>
-  <hop> <from>CSV file input</from><to>Select values</to><enabled>Y</enabled> </hop>
   <hop> <from>Select values</from><to>Table output</to><enabled>Y</enabled> </hop>
+  <hop> <from>CSV file input</from><to>Add sequence</to><enabled>Y</enabled> </hop>
+  <hop> <from>Add sequence</from><to>Select values</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>CSV file input</name>
@@ -722,8 +723,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>105</xloc>
-      <yloc>98</yloc>
+      <xloc>62</xloc>
+      <yloc>68</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -739,7 +740,11 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <fields>      <field>        <name>Kundenname</name>
+    <fields>      <field>        <name>cd_id</name>
+        <rename/>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>      <field>        <name>Kundenname</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -958,8 +963,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>242</xloc>
-      <yloc>59</yloc>
+      <xloc>247</xloc>
+      <yloc>66</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -977,12 +982,12 @@
            </partitioning>
     <connection>staging</connection>
     <schema>staging</schema>
-    <table>c_bayer_test</table>
+    <table>cd_bayer_test</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
     <use_batch>Y</use_batch>
-    <specify_fields>N</specify_fields>
+    <specify_fields>Y</specify_fields>
     <partitioning_enabled>N</partitioning_enabled>
     <partitioning_field/>
     <partitioning_daily>N</partitioning_daily>
@@ -993,11 +998,260 @@
     <return_keys>N</return_keys>
     <return_field/>
     <fields>
+        <field>
+          <column_name>cd_id</column_name>
+          <stream_name>cd_id</stream_name>
+        </field>
+        <field>
+          <column_name>Kundenname</column_name>
+          <stream_name>Kundenname</stream_name>
+        </field>
+        <field>
+          <column_name>Aufzeichnungsschluessel</column_name>
+          <stream_name>Aufzeichnungsschluessel</stream_name>
+        </field>
+        <field>
+          <column_name>GCN</column_name>
+          <stream_name>GCN</stream_name>
+        </field>
+        <field>
+          <column_name>Kundennummer</column_name>
+          <stream_name>Kundennummer</stream_name>
+        </field>
+        <field>
+          <column_name>Positionsgeber</column_name>
+          <stream_name>Positionsgeber</stream_name>
+        </field>
+        <field>
+          <column_name>Reisender</column_name>
+          <stream_name>Reisender</stream_name>
+        </field>
+        <field>
+          <column_name>Rechnungsdatum</column_name>
+          <stream_name>Rechnungsdatum</stream_name>
+        </field>
+        <field>
+          <column_name>Rechnungsnummer</column_name>
+          <stream_name>Rechnungsnummer</stream_name>
+        </field>
+        <field>
+          <column_name>Agentur</column_name>
+          <stream_name>Agentur</stream_name>
+        </field>
+        <field>
+          <column_name>Agenturnummer</column_name>
+          <stream_name>Agenturnummer</stream_name>
+        </field>
+        <field>
+          <column_name>Reservierungsquelle</column_name>
+          <stream_name>Reservierungsquelle</stream_name>
+        </field>
+        <field>
+          <column_name>ID_des_Buchungsberaters</column_name>
+          <stream_name>ID_des_Buchungsberaters</stream_name>
+        </field>
+        <field>
+          <column_name>Begruendungscode_Flug</column_name>
+          <stream_name>Begruendungscode_Flug</stream_name>
+        </field>
+        <field>
+          <column_name>Begruendungscode_Besch_Flug</column_name>
+          <stream_name>Begruendungscode_Besch_Flug</stream_name>
+        </field>
+        <field>
+          <column_name>Kreditkartennummer</column_name>
+          <stream_name>Kreditkartennummer</stream_name>
+        </field>
+        <field>
+          <column_name>Kreditkartentyp</column_name>
+          <stream_name>Kreditkartentyp</stream_name>
+        </field>
+        <field>
+          <column_name>Ablaufdatum_der_Kreditkarte</column_name>
+          <stream_name>Ablaufdatum_der_Kreditkarte</stream_name>
+        </field>
+        <field>
+          <column_name>Erstattungsindikator</column_name>
+          <stream_name>Erstattungsindikator</stream_name>
+        </field>
+        <field>
+          <column_name>Umschreibungsindikator</column_name>
+          <stream_name>Umschreibungsindikator</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Anzahl</column_name>
+          <stream_name>Teilstrecke_Anzahl</stream_name>
+        </field>
+        <field>
+          <column_name>Urspruengliche_Dokumentnummer</column_name>
+          <stream_name>Urspruengliche_Dokumentnummer</stream_name>
+        </field>
+        <field>
+          <column_name>Int_Inl</column_name>
+          <stream_name>Int_Inl</stream_name>
+        </field>
+        <field>
+          <column_name>Reisesektor</column_name>
+          <stream_name>Reisesektor</stream_name>
+        </field>
+        <field>
+          <column_name>POS_Land</column_name>
+          <stream_name>POS_Land</stream_name>
+        </field>
+        <field>
+          <column_name>Reisedauer</column_name>
+          <stream_name>Reisedauer</stream_name>
+        </field>
+        <field>
+          <column_name>Abreisedatum</column_name>
+          <stream_name>Abreisedatum</stream_name>
+        </field>
+        <field>
+          <column_name>Zeit_der_Abreise</column_name>
+          <stream_name>Zeit_der_Abreise</stream_name>
+        </field>
+        <field>
+          <column_name>Ankunftsdatum</column_name>
+          <stream_name>Ankunftsdatum</stream_name>
+        </field>
+        <field>
+          <column_name>Ankunftszeit</column_name>
+          <stream_name>Ankunftszeit</stream_name>
+        </field>
+        <field>
+          <column_name>Ticketnummer</column_name>
+          <stream_name>Ticketnummer</stream_name>
+        </field>
+        <field>
+          <column_name>Flugnummer</column_name>
+          <stream_name>Flugnummer</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Flugdauer</column_name>
+          <stream_name>Teilstrecke_Flugdauer</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Code_Transportunternehmen</column_name>
+          <stream_name>Teilstrecke_Code_Transportunternehmen</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Name_Transportunternehmen</column_name>
+          <stream_name>Teilstrecke_Name_Transportunternehmen</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Origin_Airport_Code</column_name>
+          <stream_name>Segment_Origin_Airport_Code</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Origin_Airport_Name</column_name>
+          <stream_name>Segment_Origin_Airport_Name</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Code_Herkunftsland</column_name>
+          <stream_name>Teilstrecke_Code_Herkunftsland</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Name_Herkunftsland</column_name>
+          <stream_name>Teilstrecke_Name_Herkunftsland</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Origin_Region_Name</column_name>
+          <stream_name>Segment_Origin_Region_Name</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Destination_Airport_Code</column_name>
+          <stream_name>Segment_Destination_Airport_Code</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Destination_Airport_Name</column_name>
+          <stream_name>Segment_Destination_Airport_Name</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Code_Zielland</column_name>
+          <stream_name>Teilstrecke_Code_Zielland</stream_name>
+        </field>
+        <field>
+          <column_name>Teilstrecke_Name_Zielland</column_name>
+          <stream_name>Teilstrecke_Name_Zielland</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Destination_Region_Name</column_name>
+          <stream_name>Segment_Destination_Region_Name</stream_name>
+        </field>
+        <field>
+          <column_name>Vollstaendige_Ticket_Reiseroute</column_name>
+          <stream_name>Vollstaendige_Ticket_Reiseroute</stream_name>
+        </field>
+        <field>
+          <column_name>Direktionale_Teilstrecke</column_name>
+          <stream_name>Direktionale_Teilstrecke</stream_name>
+        </field>
+        <field>
+          <column_name>Bidirektionale_Teilstrecke</column_name>
+          <stream_name>Bidirektionale_Teilstrecke</stream_name>
+        </field>
+        <field>
+          <column_name>Tarifbasis</column_name>
+          <stream_name>Tarifbasis</stream_name>
+        </field>
+        <field>
+          <column_name>Buchungsklassencode</column_name>
+          <stream_name>Buchungsklassencode</stream_name>
+        </field>
+        <field>
+          <column_name>Kabine</column_name>
+          <stream_name>Kabine</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Distance_Miles</column_name>
+          <stream_name>Segment_Distance_Miles</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Cost_Per_Miles_EUR</column_name>
+          <stream_name>Segment_Cost_Per_Miles_EUR</stream_name>
+        </field>
+        <field>
+          <column_name>Segment_Fare_Excluding_Taxes_EUR</column_name>
+          <stream_name>Segment_Fare_Excluding_Taxes_EUR</stream_name>
+        </field>
+        <field>
+          <column_name>Calculated_Segment_Fare_Including_Taxes_EUR</column_name>
+          <stream_name>Calculated_Segment_Fare_Including_Taxes_EUR</stream_name>
+        </field>
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>378</xloc>
       <yloc>102</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Add sequence</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>cd_id</valuename>
+      <use_database>N</use_database>
+      <connection>staging</connection>
+      <schema/>
+      <seqname>SEQ_</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>1000000</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>160</xloc>
+      <yloc>169</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

@@ -2,7 +2,7 @@
 library(RODBC)
 
 startzeit<-Sys.time()
-channel<-odbcConnect("odbc_production", uid = "postgres")  #, pwd = "locknload"
+channel<-odbcConnect("staging", uid = "staging")  #, pwd = "locknload"
 #sqlSave(channel, dat=airportFrame, tablename="AIRPORTS", rownames=FALSE, fast=TRUE)
 myQuery<-"select now()"
 result<-sqlQuery(channel, myQuery)
@@ -17,8 +17,8 @@ str(airports)
 Encoding(airports$city)
 
 startzeit<-Sys.time()
-channel<-odbcConnect("odbc_production", uid = "postgres") 
-sqlSave(channel, dat=airports, tablename="airports", rownames=FALSE, fast=TRUE)
+channel<-odbcConnect("staging", uid = "staging") 
+sqlSave(channel, dat=airports, tablename="staging.of_airports", rownames=FALSE, fast=TRUE)
 odbcClose(channel)
 laufzeit<-Sys.time()-startzeit
 print(laufzeit)
@@ -28,8 +28,8 @@ print(laufzeit)
 str(airlines)
 
 startzeit<-Sys.time()
-channel<-odbcConnect("odbc_production", uid = "postgres")  
-sqlSave(channel, dat=airlines, tablename="airlines", rownames=FALSE, fast=TRUE)
+channel<-odbcConnect("staging", uid = "staging") 
+sqlSave(channel, dat=airlines, tablename="staging.of_airlines", rownames=FALSE, fast=TRUE)
 odbcClose(channel)
 laufzeit<-Sys.time()-startzeit
 print(laufzeit)
@@ -39,8 +39,8 @@ print(laufzeit)
 str(routes)
 
 startzeit<-Sys.time()
-channel<-odbcConnect("odbc_production", uid = "postgres")  
-sqlSave(channel, dat=routes, tablename="routes", rownames=FALSE, fast=TRUE)
+channel<-odbcConnect("staging", uid = "staging") 
+sqlSave(channel, dat=routes, tablename="staging.of_routes", rownames=FALSE, fast=TRUE)
 odbcClose(channel)
 laufzeit<-Sys.time()-startzeit
 print(laufzeit)
