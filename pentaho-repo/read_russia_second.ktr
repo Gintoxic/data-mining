@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>read_russia</name>
+    <name>read_russia_second</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -68,7 +68,7 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;04&#x2f;14 22&#x3a;59&#x3a;41.639</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;04&#x2f;15 22&#x3a;33&#x3a;06.855</modified_date>
+  <modified_date>2014&#x2f;04&#x2f;15 22&#x3a;33&#x3a;36.950</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -98,8 +98,8 @@
   </connection>
   <order>
   <hop> <from>CSV file input</from><to>Add sequence</to><enabled>Y</enabled> </hop>
-  <hop> <from>Select values</from><to>Table output</to><enabled>Y</enabled> </hop>
   <hop> <from>Add sequence</from><to>Select values</to><enabled>Y</enabled> </hop>
+  <hop> <from>Select values</from><to>Table output</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Add sequence</name>
@@ -119,13 +119,13 @@
       <seqname>SEQ_</seqname>
       <use_counter>Y</use_counter>
       <counter_name/>
-      <start_at>2000000</start_at>
+      <start_at>2001473</start_at>
       <increment_by>1</increment_by>
       <max_value>999999999</max_value>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>254</xloc>
-      <yloc>238</yloc>
+      <xloc>199</xloc>
+      <yloc>223</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -141,7 +141,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;customers&#x5c;20140414_russland&#x5c;Q4 flights from Germany renamed.csv</filename>
+    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;customers&#x5c;20140414_russland&#x5c;Q4 flights to Germany &#x28;1&#x29; renamed.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -377,8 +377,8 @@
       </field>        <select_unspecified>N</select_unspecified>
     </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>367</xloc>
-      <yloc>129</yloc>
+      <xloc>285</xloc>
+      <yloc>135</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -471,8 +471,8 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>484</xloc>
-      <yloc>216</yloc>
+      <xloc>396</xloc>
+      <yloc>133</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
