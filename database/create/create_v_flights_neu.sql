@@ -1,4 +1,4 @@
-﻿--create view staging.v_flights as
+﻿create view staging.v_flights as
 with flights_temp1 as
 (
 select 
@@ -50,8 +50,10 @@ on f.origin_icao=aic1.icao
 left join staging.v_airports_ref_icao aic2 
 on f.dest_icao=aic2.icao
 )
-select f.*, extract ('epoch' from age(arr_act_local,arr_sched_local)),arr_sched_local-arr_act_local as diftime,arr_act_local,arr_sched_local from flights_temp1 f
-order by diftime desc
---where airline_vec is null
+select f.*, --arr_act_local,arr_sched_local,
+extract ('epoch' from arr_act_utc-arr_sched_utc)/3600 as diftime_utc --,arr_act_utc,arr_sched_utc
 
+from flights_temp1 f
+
+--where airline_vec is null
 --where origin_iata is null or dest_iata is null
