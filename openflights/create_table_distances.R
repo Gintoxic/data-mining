@@ -1,4 +1,6 @@
-load(file="distBayer.Rdata")
+
+getwd()
+load(file="../data/openflights_calc/dist_flights_2013.Rdata")
 myFrame[93740:93744,]
 myFrameTemp[93740:93744,]
 
@@ -16,9 +18,12 @@ names(myFrameAll)<-c("id","origin","dest", "distance", "origin_dest" )
 myFrameAll[1:10,]
 
 startzeit<-Sys.time()
-channel<-odbcConnect("staging", uid = "staging") 
-sqlSave(channel, dat=myFrameAll, tablename="staging.of_distances", rownames=FALSE, fast=TRUE)
-odbcClose(channel)
+channel<-connectStaging() 
+dbWriteTable( channel, "staging.of_distances", myFrameAll )
+disconnectStaging(channel)
+
+#sqlSave(channel, dat=myFrameAll, tablename="staging.of_distances", rownames=FALSE, fast=TRUE)
+
 laufzeit<-Sys.time()-startzeit
 print(laufzeit)
 

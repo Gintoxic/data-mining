@@ -55,5 +55,3 @@ extract ('epoch' from arr_act_utc-arr_sched_utc)/3600 as diftime_utc --,arr_act_
 
 from flights_temp1 f
 
---where airline_vec is null
---where origin_iata is null or dest_iata is null
