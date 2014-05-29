@@ -10,17 +10,8 @@ return(con)
 
 disconnectStaging=function(con)
 {
-  
   dbDisconnect(con)
 }
-
-
-close(con)
-dbDisconnect(con)
-
-From here on, I can read
-my.r.df <- dbReadTable( con, "myschema.mytablename" )
-
 
 
 
@@ -51,13 +42,9 @@ startzeit<-Sys.time()
 #channel<-odbcConnect("staging", uid = "staging") 
 #sqlSave(channel, dat=airports, tablename="staging.of_airports", rownames=FALSE, fast=TRUE)
 
-
 channel<-connectStaging()  #, pwd = "locknload"
 dbWriteTable( channel, "staging.of_airports", airports )
 disconnectStaging(channel)
-
-
-
 
 laufzeit<-Sys.time()-startzeit
 print(laufzeit)
