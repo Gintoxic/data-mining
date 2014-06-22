@@ -68,7 +68,7 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;04&#x2f;27 21&#x3a;43&#x3a;17.113</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;04&#x2f;27 21&#x3a;59&#x3a;45.147</modified_date>
+  <modified_date>2014&#x2f;05&#x2f;05 07&#x3a;31&#x3a;13.636</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -102,6 +102,35 @@
   <hop> <from>CSV file input 2</from><to>Add sequence</to><enabled>Y</enabled> </hop>
   </order>
   <step>
+    <name>Add sequence</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+      <valuename>cd_id</valuename>
+      <use_database>N</use_database>
+      <connection>staging</connection>
+      <schema>staging</schema>
+      <seqname>cd_id_ru_seq</seqname>
+      <use_counter>Y</use_counter>
+      <counter_name/>
+      <start_at>2000001</start_at>
+      <increment_by>1</increment_by>
+      <max_value>999999999</max_value>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>327</xloc>
+      <yloc>258</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
     <name>CSV file input 2</name>
     <type>CsvInput</type>
     <description/>
@@ -112,7 +141,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;customers&#x5c;20140424_russland&#x5c;2013 within Europe LH group.csv</filename>
+    <filename>D&#x3a;&#x5c;Work&#x5c;data&#x5c;customers&#x5c;20140429_russland&#x5c;2013 within Europe all airlines.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -296,35 +325,6 @@
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
       <xloc>176</xloc>
       <yloc>259</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Add sequence</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-      <valuename>cd_id</valuename>
-      <use_database>N</use_database>
-      <connection>staging</connection>
-      <schema>staging</schema>
-      <seqname>cd_id_ru_seq</seqname>
-      <use_counter>Y</use_counter>
-      <counter_name/>
-      <start_at>2010484</start_at>
-      <increment_by>1</increment_by>
-      <max_value>999999999</max_value>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>327</xloc>
-      <yloc>258</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
