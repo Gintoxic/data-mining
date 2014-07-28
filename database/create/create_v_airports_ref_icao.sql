@@ -1,7 +1,7 @@
-﻿create view staging.v_airports_ref_icao as
+﻿create view v_airports_ref_icao as
 with airports1 as
 (
-select distinct on (iata, icao) * from staging.of_airports
+select distinct on (iata, icao) * from of_airports
 where iata not in ('', '\N') and icao not in ('', '\N')
 ), 
 

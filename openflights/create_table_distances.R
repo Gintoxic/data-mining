@@ -2,7 +2,7 @@
 getwd()
 load(file="../data/openflights_calc/dist_flights_2013.Rdata")
 myFrame[93740:93744,]
-myFrameTemp[93740:93744,]
+#myFrameTemp[93740:93744,]
 
 myFrameTemp<-myFrame
 
@@ -19,7 +19,7 @@ myFrameAll[1:10,]
 
 startzeit<-Sys.time()
 channel<-connectStaging() 
-dbWriteTable( channel, "staging.of_distances", myFrameAll )
+dbWriteTable( channel, "of_distances", myFrameAll )
 disconnectStaging(channel)
 
 #sqlSave(channel, dat=myFrameAll, tablename="staging.of_distances", rownames=FALSE, fast=TRUE)

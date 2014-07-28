@@ -67,19 +67,19 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;04&#x2f;12 22&#x3a;48&#x3a;20.398</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;07&#x2f;28 17&#x3a;11&#x3a;24.176</modified_date>
+  <modified_date>2014&#x2f;05&#x2f;02 22&#x3a;10&#x3a;56.342</modified_date>
   </info>
   <notepads>
   </notepads>
   <connection>
-    <name>flightrefund</name>
+    <name>staging</name>
     <server>localhost</server>
     <type>POSTGRESQL</type>
     <access>Native</access>
     <database>flightrefund</database>
     <port>5432</port>
-    <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb16bd64d980aac9</password>
+    <username>staging</username>
+    <password>Encrypted 2be98afc86aa7f2e4cb0aba71d99ba1dd</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -357,12 +357,12 @@
       </field>
       <field>
         <name>Enroute</name>
-        <type>String</type>
-        <format/>
+        <type>Integer</type>
+        <format>&#x23;</format>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>255</length>
+        <length>15</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
@@ -509,8 +509,8 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <connection>flightrefund</connection>
-    <schema>public</schema>
+    <connection>staging</connection>
+    <schema>staging</schema>
     <table>fa_flights_2013</table>
     <commit>1000</commit>
     <truncate>N</truncate>

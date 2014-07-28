@@ -1,4 +1,4 @@
-﻿create view v_flights as
+﻿--create view v_flights as
 with flights_temp1 as
 (
 select 
@@ -43,6 +43,7 @@ d.distance as distance_km_cal,
 ic.len_vec as airline_len_vec,
 ic.airline_vec 
 
+
 from fa_flights_2013 f left join v_airlines_ref_icao ic
 on substr(f.ident,1,3)=ic.icao
 left join of_distances d
@@ -54,7 +55,8 @@ on f.dest_icao=aic2.icao
 left join type_dist td on 
 f.distance between td.dist_min and td.dist_max
 ), 
-flights_temp2 as
+
+analysis as
 (
 select f.*, 
 
@@ -63,14 +65,13 @@ arr_act_local-arr_sched_local as diftime_locla_raw,
 extract ('epoch' from arr_act_utc-arr_sched_utc)/60 as diftime_utc, 
 extract ('epoch' from arr_act_local-arr_sched_local)/60 as diftime_local,
 
+
 extract ('epoch' from dep_sched_local-dep_sched_utc)/3600 as timezone_dif_dep, 
 extract ('epoch' from arr_sched_local-arr_sched_utc)/3600 as timezone_dif_arr
 
-from flights_temp1 f
---order by diftime_utc nulls last
-)
-select * from flights_temp2
-where (diftime_utc is null or diftime_utc >=180) 
-and origin_iata is not null and dest_iata is not null
---order by flight_id
 
+from flights_temp1 f
+order by diftime_utc nulls last
+)
+--select arr_sched_local, arr_act_local, diftime_local from analysis
+select ident, arr_sched_utc, arr_act_utc, diftime_utc from analysis
