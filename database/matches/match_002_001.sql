@@ -11,7 +11,7 @@ distinct_flights as
 
 valid_rows as
 (
-	select c.* from cd_001_01 c
+	select c.* from cd_002_01 c
 	where flightnumber  !~ '[^0-9]'
 ),
 
@@ -21,9 +21,12 @@ match as
 	from valid_rows vr inner join distinct_flights f
 	on vr.airline_iata=f.airline_iata
 	and vr.flightnumber::numeric=f.flightnumber::numeric
-	and vr.dep_sched_local_date=f.dep_sched_local_date
+	and to_timestamp(vr.dep_sched_local_date, 'DD.MM.YYYY')::timestamp without time zone 
+	=f.dep_sched_local_date
 	and vr.origin_iata=f.origin_iata
 	and vr.dest_iata=f.dest_iata
 )
+--select * from match;
+
 select cancelled, count(*), count(distinct flight_id), count(distinct import_counter) from match
 group by cancelled
