@@ -1,4 +1,4 @@
-﻿create view v_flights as
+﻿create materialized view v_flights as
 with flights_temp1 as
 (
 select 
@@ -64,9 +64,17 @@ extract ('epoch' from arr_act_utc-arr_sched_utc)/60 as diftime_utc,
 extract ('epoch' from arr_act_local-arr_sched_local)/60 as diftime_local,
 
 extract ('epoch' from dep_sched_local-dep_sched_utc)/3600 as timezone_dif_dep, 
-extract ('epoch' from arr_sched_local-arr_sched_utc)/3600 as timezone_dif_arr
+extract ('epoch' from arr_sched_local-arr_sched_utc)/3600 as timezone_dif_arr,
+
+v1.country as origin_country,
+v2.country as dest_country
 
 from flights_temp1 f
+left join v_cities v1
+on f.origin_icao=v1.icao
+left join v_cities v2
+on f.dest_icao=v2.icao
+
 --order by diftime_utc nulls last
 )
 select * from flights_temp2
