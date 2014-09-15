@@ -1,6 +1,6 @@
 <transformation>
   <info>
-    <name>customer_006_import_001</name>
+    <name>customer_008_import_001</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -68,7 +68,7 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;08&#x2f;25 21&#x3a;06&#x3a;52.908</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;09&#x2f;14 22&#x3a;33&#x3a;55.882</modified_date>
+  <modified_date>2014&#x2f;09&#x2f;14 22&#x3a;36&#x3a;11.104</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -113,7 +113,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;customers&#x5c;006_Dk&#x5c;20140818&#x5c;2013 VR cleanIB140722144453142.csv</filename>
+    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;customers&#x5c;008_Konica&#x5c;20140904&#x5c;Abflugdaten 2013_KonicaMinolta.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>
@@ -128,124 +128,102 @@
     <encoding>UTF-8</encoding>
     <fields>
       <field>
-        <name>recloc</name>
+        <name>dep_sched_local_date</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
+        <length>255</length>
         <precision>-1</precision>
-        <trim_type>none</trim_type>
+        <trim_type>both</trim_type>
       </field>
       <field>
-        <name>ticket</name>
+        <name>airline_iata</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
+        <length>255</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>origin</name>
+        <name>airline_iata_op</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
+        <length>255</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>destinat</name>
+        <name>airline_iata_is</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
+        <length>255</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>airline</name>
+        <name>flightnumber_sched</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
+        <length>255</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>airlniata</name>
+        <name>flightnumber_op</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
+        <length>255</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>rdepdttim</name>
+        <name>dep_sched_local_time</name>
         <type>String</type>
         <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
+        <length>255</length>
         <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>fltno</name>
+        <name>origin_iata</name>
         <type>String</type>
-        <format>&#x23;</format>
+        <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
-        <precision>0</precision>
+        <length>255</length>
+        <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
       <field>
-        <name>seqno</name>
-        <type>Integer</type>
-        <format>&#x23;</format>
+        <name>dest_iata</name>
+        <type>String</type>
+        <format/>
         <currency>&#x20ac;</currency>
         <decimal>,</decimal>
         <group>.</group>
-        <length>16</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>reckey</name>
-        <type>Integer</type>
-        <format>&#x23;</format>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>16</length>
-        <precision>0</precision>
-        <trim_type>none</trim_type>
-      </field>
-      <field>
-        <name>legcntr</name>
-        <type>Integer</type>
-        <format>&#x23;</format>
-        <currency>&#x20ac;</currency>
-        <decimal>,</decimal>
-        <group>.</group>
-        <length>16</length>
-        <precision>0</precision>
+        <length>255</length>
+        <precision>-1</precision>
         <trim_type>none</trim_type>
       </field>
     </fields>
@@ -272,47 +250,39 @@
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>recloc</name>
+      </field>      <field>        <name>dep_sched_local_date</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>ticket</name>
+      </field>      <field>        <name>airline_iata</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>origin</name>
+      </field>      <field>        <name>airline_iata_op</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>destinat</name>
+      </field>      <field>        <name>airline_iata_is</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>airline</name>
+      </field>      <field>        <name>flightnumber_sched</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>airlniata</name>
+      </field>      <field>        <name>flightnumber_op</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>rdepdttim</name>
+      </field>      <field>        <name>dep_sched_local_time</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>fltno</name>
+      </field>      <field>        <name>origin_iata</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
-      </field>      <field>        <name>seqno</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>reckey</name>
-        <rename/>
-        <length>-2</length>
-        <precision>-2</precision>
-      </field>      <field>        <name>legcntr</name>
+      </field>      <field>        <name>dest_iata</name>
         <rename/>
         <length>-2</length>
         <precision>-2</precision>
@@ -342,7 +312,7 @@
            </partitioning>
     <connection>flightrefund</connection>
     <schema/>
-    <table>cd_006_01</table>
+    <table>cd_008_01</table>
     <commit>1000</commit>
     <truncate>N</truncate>
     <ignore_errors>N</ignore_errors>
@@ -363,48 +333,40 @@
           <stream_name>import_counter</stream_name>
         </field>
         <field>
-          <column_name>recloc</column_name>
-          <stream_name>recloc</stream_name>
+          <column_name>dep_sched_local_date</column_name>
+          <stream_name>dep_sched_local_date</stream_name>
         </field>
         <field>
-          <column_name>ticket</column_name>
-          <stream_name>ticket</stream_name>
+          <column_name>airline_iata</column_name>
+          <stream_name>airline_iata</stream_name>
         </field>
         <field>
-          <column_name>origin</column_name>
-          <stream_name>origin</stream_name>
+          <column_name>airline_iata_op</column_name>
+          <stream_name>airline_iata_op</stream_name>
         </field>
         <field>
-          <column_name>destinat</column_name>
-          <stream_name>destinat</stream_name>
+          <column_name>airline_iata_is</column_name>
+          <stream_name>airline_iata_is</stream_name>
         </field>
         <field>
-          <column_name>airline</column_name>
-          <stream_name>airline</stream_name>
+          <column_name>flightnumber_sched</column_name>
+          <stream_name>flightnumber_sched</stream_name>
         </field>
         <field>
-          <column_name>airlniata</column_name>
-          <stream_name>airlniata</stream_name>
+          <column_name>flightnumber_op</column_name>
+          <stream_name>flightnumber_op</stream_name>
         </field>
         <field>
-          <column_name>rdepdttim</column_name>
-          <stream_name>rdepdttim</stream_name>
+          <column_name>dep_sched_local_time</column_name>
+          <stream_name>dep_sched_local_time</stream_name>
         </field>
         <field>
-          <column_name>fltno</column_name>
-          <stream_name>fltno</stream_name>
+          <column_name>origin_iata</column_name>
+          <stream_name>origin_iata</stream_name>
         </field>
         <field>
-          <column_name>seqno</column_name>
-          <stream_name>seqno</stream_name>
-        </field>
-        <field>
-          <column_name>reckey</column_name>
-          <stream_name>reckey</stream_name>
-        </field>
-        <field>
-          <column_name>legcntr</column_name>
-          <stream_name>legcntr</stream_name>
+          <column_name>dest_iata</column_name>
+          <stream_name>dest_iata</stream_name>
         </field>
         <field>
           <column_name>import_id</column_name>
@@ -437,7 +399,7 @@
       <seqname>SEQ_</seqname>
       <use_counter>Y</use_counter>
       <counter_name/>
-      <start_at>1988</start_at>
+      <start_at>1</start_at>
       <increment_by>1</increment_by>
       <max_value>99999999</max_value>
      <cluster_schema/>
