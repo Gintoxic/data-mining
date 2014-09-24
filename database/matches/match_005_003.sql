@@ -62,13 +62,14 @@ when type_dist=2 then '400,00'
 when type_dist=3 then '600,00' end as Ersatz,
 ticket_number as Ticket_Nr, 
 'EUR' as Währung,
---to_char(
+trim(
+to_char(
 (select rate from conv_rates where currency='RUB' and date=(select max(date) from conv_rates))* 
-ticket_price_rub as Tick_Preis,
---to_char(
+ticket_price_rub, '99G999D99')) as Tick_Preis,
+trim(
+to_char(
 (select rate from conv_rates where currency='RUB' and date=(select max(date) from conv_rates))*
-ticketed_taxes_rub
- as Tick_Geb,
+ticketed_taxes_rub, '99G999D99')) as Tick_Geb,
 
 --ticket_price_rub- ticket_price_rub/1.07 as Tick_ST_7,
 --ticket_price_rub- ticket_price_rub/1.19 as Tick_ST_19,
