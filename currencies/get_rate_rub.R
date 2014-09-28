@@ -1,6 +1,7 @@
 library(RCurl)
 library(rjson)
 
+source("currencies/currencyFunctions.R")
 currencySource="RUB"
 
 
@@ -20,26 +21,19 @@ postgres <- JDBC( "org.postgresql.Driver", "postgresql-9.3-1101.jdbc3.jar")
 startzeit<-Sys.time()
 channel<-connectStaging()  #, pwd = "locknload"
 myQuery<-paste("select max(date) from conv_rates where currency='", currencySource,"'",sep="")
-res<-dbGetQuery(channel, myQuery,... =  )
+res<-dbGetQuery(channel, myQuery)
 disconnectStaging(channel)
 
-res$max<
-  
-cf$date
-
-?dbGetQuery
 
 
-
-
-
-
+if (res$max<as.character(Sys.Date()))
+{
 startzeit<-Sys.time()
 channel<-connectStaging()  #, pwd = "locknload"
 #myQuery<-"select now();"
 #res<-dbSendQuery(channel, myQuery)
 
-dbWriteTable( channel, "conv_rates", fr )
+dbWriteTable( channel, "conv_rates", cf,append=TRUE, row.names=FALSE, overwrite=FALSE)
 
 disconnectStaging(channel)
 
@@ -47,5 +41,5 @@ print(res)
 laufzeit<-Sys.time()-startzeit
 print(laufzeit)
 
-
+}
 
