@@ -1,26 +1,27 @@
-﻿--create materialized view v_flights as
+﻿create materialized view v_flights as
 with flights_temp0 as
 (
-select * , unnest(ident::text||string_to_array(code_shares, ' ')) ident_op
+select * , unnest(ident::text||string_to_array(code_shares, ' ')) ident_va
 from fa_flights_2013
 ),
 flights_temp1 as
 (
 select 
 flight_id,
-ident,
+ident as ident_op,
  
-substr(ident,1,3) as airline_icao,
-ic.iata as airline_iata,
-substr(ident, 4, length(ident)-3) as flightnumber,
+substr(ident,1,3) as airline_icao_op,
+icop.iata as airline_iata_op,
+substr(ident, 4, length(ident)-3) as flightnumber_op,
 
 code_shares,
-ident_op,
-case when ident_op=ident then 1 else 0 end as airline_op,
+ident_va,
+case when ident_va=ident then 1 else 0 end as airline_opva,
 
-substr(ident_op,1,3) as airline_icao_op,
-icop.iata as airline_iata_op,
-substr(ident_op, 4, length(ident_op)-3) as flightnumber_op,
+substr(ident_va,1,3) as airline_icao,
+
+icva.iata as airline_iata,
+substr(ident_va, 4, length(ident_va)-3) as flightnumber,
 
 origin_icao,
 aic1.iata as origin_iata, 
@@ -47,22 +48,20 @@ to_timestamp(arr_act_local, 'YYYY-MM-DD HH24:MI'):: timestamp without time zone 
 to_timestamp(arr_act_utc, 'YYYY-MM-DD HH24:MI'):: timestamp without time zone as arr_act_utc,
 
 registration,
-code_shares,
 f.distance * 1.85200 as distance_km_fa,
 td.type_dist,
 
 enroute, 
 cancelled,
 d.distance as distance_km_cal,
-ic.len_vec as airline_len_vec,
-ic.airline_vec 
+icop.len_vec as airline_len_vec,
+icop.airline_vec 
 
-from flights_temp0 f left join v_airlines_ref_icao ic
-on substr(f.ident,1,3)=ic.icao
+from flights_temp0 f left join v_airlines_ref_icao icop
+on substr(f.ident,1,3)=icop.icao
 
-left join v_airlines_ref_icao icop
-on substr(f.ident_op,1,3)=icop.icao
-
+left join v_airlines_ref_icao icva
+on substr(f.ident_va,1,3)=icva.icao
 
 
 left join of_distances d
