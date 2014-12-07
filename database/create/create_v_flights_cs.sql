@@ -52,7 +52,7 @@ f.distance * 1.85200 as distance_km_fa,
 td.type_dist,
 
 enroute, 
-cancelled,
+case when cancelled in ('Cancelled','Yes') then 'Cancelled' else 'Delayed' end as cancelled ,
 d.distance as distance_km_cal,
 icop.len_vec as airline_len_vec,
 icop.airline_vec 

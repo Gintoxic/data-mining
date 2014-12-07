@@ -4,10 +4,10 @@ with
 distinct_flights as
 (
 	select 
-	distinct on (airline_iata, flightnumber, date_trunc('day', dep_sched_local), origin_iata, dest_iata)
-	airline_opva,
+	distinct on (airline_iata, flightnumber, date_trunc('minute', dep_sched_local), origin_iata, dest_iata)
 	airline_iata, flightnumber, 
 	dep_sched_local,
+	airline_opva,
 	date_trunc('minute', dep_sched_local) as dep_sched_local_min,
 	date_trunc('hour', dep_sched_local) as dep_sched_local_hour, 
 	date_trunc('day', dep_sched_local) as dep_sched_local_date, 
@@ -17,16 +17,27 @@ distinct_flights as
 ),
 prep1 as
 (
-select * from  cd_012_01
-where dep_sched_local_date != '[no data]' and dep_sched_local_time is not null
-),
+select *, origin as origin_iata , 
+destinat as dest_iata, airline as airline_iata, 
+fltno as flightnumber
+
+
+from  cd_015_01
+--where dep_sched_local_date != '[no data]' and dep_sched_local_time is not null
+)
+--select * from prep1
+
+
+--select * from prep1
+,
 
 prep2 as
-(select import_counter, origin_iata, dest_iata, airline_iata_op as airline_iata, flightnumber_op as flightnumber, 
-to_timestamp(dep_sched_local_date || ' ' || dep_sched_local_time,'DD.MM.YYYY HH24:MI')::timestamp without time zone as dep_sched_local 
+(select import_counter, origin_iata, dest_iata, airline_iata as airline_iata, flightnumber as flightnumber, 
+to_timestamp(rdepdttim,'DD.MM.YYYY HH24:MI')::timestamp without time zone as dep_sched_local 
 from prep1
 ),
 --select * from prep2
+
 
 valid_rows as
 (
@@ -46,9 +57,11 @@ valid_rows as
 ),
 --select * from valid_rows
 
+
 match as
 (
-	select vr.* ,f.dep_sched_local as matched_dep_sched_local, f.flight_id, f.cancelled, f.diftime_utc,airline_opva,
+	select --f.dest_iata as dest_iata_test, 
+	vr.* ,f.dep_sched_local as matched_dep_sched_local, f.flight_id, f.cancelled, f.diftime_utc, f.airline_opva,
 
 
 case when type_dist =1 then 'kurz'
@@ -67,9 +80,11 @@ when type_dist=3 then 'lang' end as dist
 	and vr.origin_iata=f.origin_iata
 	and vr.dest_iata=f.dest_iata
 )
---select * from match
---order by import_counter
+select m.*, count(*) over (partition by flight_id) 
+from match m
+order by import_counter 
 
-select  cancelled as status, airline_opva, count(*), count(distinct flight_id), count(distinct import_counter) from match
-group by cancelled, airline_opva
+
+--select case when cancelled='Cancelled' then 'Cancelled' else 'Delayed' end as status, count(*), count(distinct flight_id), count(distinct import_counter) from match
+--group by cancelled
 
