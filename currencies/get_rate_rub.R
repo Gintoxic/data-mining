@@ -2,7 +2,7 @@ library(RCurl)
 library(rjson)
 
 source("currencies/currencyFunctions.R")
-currencySource="RUB"
+currencySource="CHF"
 
 
 cf<-getRateTo_EUR(currencySource)
