@@ -24,14 +24,16 @@ valid_rows as
 	c.origin_iata, 
 	dest_iata,
 	dep_sched_local,
-	--date_trunc('minute',dep_sched_local) as dep_sched_local_min,
-	date_trunc('hour',dep_sched_local) as dep_sched_local_hour
+	date_trunc('hour',dep_sched_local) as dep_sched_local_hour,
+	dep_date,dep_time,
+	full_name, dok_nummer, ticketnumber, coupon
 	
-	from (select import_counter, origin_iata, dest_iata, airline_iata as airline_iata, flightnumber_op as flightnumber, to_timestamp(dep_sched_local_date||' '||dep_sched_local_time,'DD.MM.YYYY hh24:min')::timestamp without time zone as dep_sched_local from cd_008_01) c
-	where flightnumber  !~ '[^0-9]'
+	from (select full_name, dok_nummer, ticketnumber, coupon, import_counter,  origin_iata, dest_iata, sched_iata as airline_iata , flightnumber_op as flightnumber, dep_date,dep_time,  to_timestamp(dep_date||' '||dep_time,'DD.MM.YYYY hh24:min')::timestamp without time zone as dep_sched_local from cd_908_02) c
+	where flightnumber  !~ '[^0-9]' and dep_date!='[no data]'
 
 ),
 --select * from valid_rows
+
 
 match as
 (
