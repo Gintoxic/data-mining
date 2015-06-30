@@ -59,5 +59,7 @@ when type_dist=3 then 'lang' end as dist
 --order by import_counter
 
 select *, case when cancelled='Cancelled' then 'Cancelled' else 'Delayed' end as status from match
+order by dep_sched_local
+
 
 
