@@ -1,41 +1,67 @@
 files<-dir("../Data/singles")
 
-i=1
 
-curfile<-paste("../Data/singles/", files[i], sep="")
+
+
 
 #text <- readLines(curfile,encoding="UTF-8")
-text <- readLines(curfile,encoding="ANSI")
-
+#readLines(curfile,encoding="ANSI")
 
 pmatch("#Vorname", text) # returns 2
+strlist<-c("Anrede: ","#Vorname: ", "#Nachname: ", "#Strasse: ","#PLZ: ","#Ort: ","#Land: ", "#Tel: ","#Email: ","#Anspruch: ",
+           "#Flugdatum: ", "#Flugnummer: ", "#Ticket-Nummer: ", "#Abflugort: ","#Planmäßiger_Zielort: ",
+           "#Tatsächlicher_Ankunftsort: ",  "#Planmäßige_Abflugszeit: ","#Tatsächliche_Ankunftszeit: ", 
+           "#Kontoinhaber: ","#IBAN: ", "#BIC: ")
+enclist<-c("ANSI", "ANSI", "ANSI", "ANSI", "UTF-8", "ANSI","UTF-8")
 
-for (j=1:length(text))
+mt<-matrix(nrow = 7,ncol = 21, data = "")
+
+for (j in 1:length(files))
 {
-  
-  
-  
+  curfile<-paste("../Data/singles/", files[j], sep="")
+  text <- readLines(curfile,encoding=enclist[j])
+
+  for (i in 1:length(strlist))
+  {
+    
+    curstr<-strlist[i]
+    curline<-pmatch(curstr, text)
+    curval<-gsub(pattern = curstr,replacement = "", x = text[curline])
+    print(curval)
+    mt[j,i]<-curval
+    
+  }
   
 }
 
-# 
-# p(pattern, x, ignore.case = FALSE, perl = FALSE, value = FALSE,
-#   fixed = FALSE, useBytes = FALSE, invert = FALSE)
-# 
-# grepl(pattern, x, ignore.case = FALSE, perl = FALSE,
-#       fixed = FALSE, useBytes = FALSE)
-# 
-# sub(pattern, replacement, x, ignore.case = FALSE, perl = FALSE,
-#     fixed = FALSE, useBytes = FALSE)
-# 
-# gsub(pattern, replacement, x, ignore.case = FALSE, perl = FALSE,
-#      fixed = FALSE, useBytes = FALSE)
-# 
-# regexpr(pattern, text, ignore.case = FALSE, perl = FALSE,
-#         fixed = FALSE, useBytes = FALSE)
-# 
-# gregexpr(pattern, text, ignore.case = FALSE, perl = FALSE,
-#          fixed = FALSE, useBytes = FALSE)
-# 
-# regexec(pattern, text, ignore.case = FALSE, perl = FALSE,
-#         fixed = FALSE, useBytes = FALSE)
+cnames<-c("Anrede","Vorname", "Nachname", "Strasse","PLZ","Ort","Land", "Tel","Email","Anspruch",
+           "Flugdatum", "Flugnummer", "Ticket_Nummer", "Abflugort","Plan_Zielort",
+           "Tats_Ankunftsort",  "Plan_Abflugszeit","Tats_Ankunftszeit", 
+           "Kontoinhaber","IBAN", "BIC")
+
+
+fr<-as.data.frame(mt, stringsAsFactors = F)
+colnames(fr)<-tolower(cnames)
+fr$import_counter<-1:length(files)
+
+library(RJDBC)
+
+connectPg=function()
+{
+  postgres <- JDBC( "org.postgresql.Driver", "postgresql-9.3-1101.jdbc3.jar")
+  con <- dbConnect(postgres, "jdbc:postgresql://localhost:5432/flightrefund", user = "postgres", 
+                   password = "postgres" )
+  return(con)
+}
+
+disconnectPg=function(con)
+{
+  dbDisconnect(con)
+}
+
+
+
+
+con<-connectPg()
+dbWriteTable(conn = con,name = "singles", value = fr)
+disconnectPg(con)

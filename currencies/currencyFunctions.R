@@ -17,13 +17,13 @@ getRateTo_EUR<-function(currencySource)
 
 
 
-connectStaging=function()
+connectPg=function()
 {
   con <- dbConnect(postgres, "jdbc:postgresql://localhost:5432/flightrefund", user = "postgres", password = "postgres" )
   return(con)
 }
 
-disconnectStaging=function(con)
+disconnectPg=function(con)
 {
   dbDisconnect(con)
 }
