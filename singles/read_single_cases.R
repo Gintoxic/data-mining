@@ -10,11 +10,17 @@ files<-dir("../Data/singles")
 pmatch("#Vorname", text) # returns 2
 strlist<-c("Anrede: ","#Vorname: ", "#Nachname: ", "#Strasse: ","#PLZ: ","#Ort: ","#Land: ", "#Tel: ","#Email: ","#Anspruch: ",
            "#Flugdatum: ", "#Flugnummer: ", "#Ticket-Nummer: ", "#Abflugort: ","#Planmäßiger_Zielort: ",
-           "#Tatsächlicher_Ankunftsort: ",  "#Planmäßige_Abflugszeit: ","#Tatsächliche_Ankunftszeit: ", 
+           "#Tatsächlicher_Ankunftsort: ",  "#Planmäßige_Abflugszeit: ","#Planmäßige_Ankunftszeit: ","#Tatsächliche_Ankunftszeit: ", 
            "#Kontoinhaber: ","#IBAN: ", "#BIC: ")
 enclist<-c("ANSI", "ANSI", "ANSI", "ANSI", "UTF-8", "ANSI","UTF-8")
 
-mt<-matrix(nrow = 7,ncol = 21, data = "")
+
+#Planmäßige_Abflugszeit: 13:35
+#Planmäßige_Ankunftszeit: 22:05 (11.07.2015)
+#Tatsächliche_Ankunftszeit: 04:20 (12.07.2015)
+
+
+mt<-matrix(nrow = 7,ncol = 22, data = "")
 
 for (j in 1:length(files))
 {
@@ -36,7 +42,7 @@ for (j in 1:length(files))
 
 cnames<-c("Anrede","Vorname", "Nachname", "Strasse","PLZ","Ort","Land", "Tel","Email","Anspruch",
            "Flugdatum", "Flugnummer", "Ticket_Nummer", "Abflugort","Plan_Zielort",
-           "Tats_Ankunftsort",  "Plan_Abflugszeit","Tats_Ankunftszeit", 
+           "Tats_Ankunftsort",  "Plan_Abflugszeit","Plan_Ankunftszeit","Tats_Ankunftszeit", 
            "Kontoinhaber","IBAN", "BIC")
 
 

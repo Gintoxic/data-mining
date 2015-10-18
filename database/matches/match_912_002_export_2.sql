@@ -168,6 +168,6 @@ last_name as R_NName,
 'U' as Anspruch,
 '1000' as Berater,
 * from match 
-where cancelled='Delayed'
+--where cancelled='Delayed'
 order by airline
 

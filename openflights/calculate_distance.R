@@ -1,7 +1,8 @@
 library(RODBC)
+library(rgeos)
 
 startzeit<-Sys.time()
-channel<-odbcConnect("flightrefund", uid = "flightrefund")  #, pwd = "locknload"
+channel<-connectPg()  #, pwd = "locknload"
 #sqlSave(channel, dat=airportFrame, tablename="AIRPORTS", rownames=FALSE, fast=TRUE)
 myQuery<-"select icao, longitude, latitude from v_airports_iaic a inner join 
 (select distinct origin_icao from v_flights) f1
@@ -10,8 +11,12 @@ inner join
 (select distinct dest_icao from v_flights) f2
 on a.icao=f2.dest_icao"
 
-result<-sqlQuery(channel, myQuery)
-odbcClose(channel)
+myQuery<-"select * from of_airports
+where iata in ('CGN','SAW')"
+
+
+result<-dbGetQuery(channel, myQuery)
+disconnectPg(channel)
 laufzeit<-Sys.time()-startzeit
 print(laufzeit)
 
