@@ -1,0 +1,37 @@
+Install Log
+---------------------------
+
+1. Programme:
+
+-Postgres: Installation (c:\Tools) - pw: postgres
+-Pentaho: Entpacken (c:\Tools\data-integration)
+-R
+-RStudio
+-Github
+-JVM8 (Wird von Pentaho benötigt)
+-open-office
+
+
+2. Datenbankadministration in PgAdmin
+
+- Neue Rolle anlegen: flightrefund, pw: flightrefund
+- Neue Datenbank anlegen: flightrefund
+
+3. Datenbank befüllen
+
+- R Skripte "read_openflights.R" und "create_tables_openflights.R" ausführen
+- R Skript "create_table_distances.R" ausführen
+- Pentaho Jobs "read_flights_2013" und "read_flights_2013_switzerland" ausführen
+- Eigentümer für alle Tabellen auf "flightrefund" ändern
+- Views erzeugen:
+--airlines_ref_icao
+--airlines_ref_iata
+--airports_ref_icao
+--airports_ref_iata
+--v_cities
+--t_type_dist
+--v_flights_cs
+
+
+
+

@@ -67,7 +67,7 @@
   <created_user>-</created_user>
   <created_date>2014&#x2f;04&#x2f;12 22&#x3a;48&#x3a;20.398</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;07&#x2f;28 17&#x3a;11&#x3a;24.176</modified_date>
+  <modified_date>2015&#x2f;10&#x2f;18 14&#x3a;41&#x3a;38.902</modified_date>
   </info>
   <notepads>
   </notepads>
@@ -110,7 +110,7 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename>D&#x3a;&#x5c;Work&#x5c;Data&#x5c;flightaware&#x5c;2013&#x5c;FlightAware_European_delays_harschack.csv</filename>
+    <filename>C&#x3a;&#x5c;Flightrefund_local&#x5c;Data&#x5c;flightaware&#x5c;2013&#x5c;FlightAware_European_delays_harschack.csv</filename>
     <filename_field/>
     <rownum_field/>
     <include_filename>N</include_filename>

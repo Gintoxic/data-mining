@@ -1,10 +1,9 @@
-Sys.setenv(JAVA_HOME='D:\\Tools\\Java\\jre8') # for 64-bit version
+#Sys.setenv(JAVA_HOME='D:\\Tools\\Java\\jre8') # for 64-bit version
 #Sys.setenv(JAVA_HOME='C:\\Program Files (x86)\\Java\\jre7\\bin') # for 32-bit version
 library(rJava)
 
 
 
-library(rJava)
 library( RJDBC ) 
 postgres <- JDBC( "org.postgresql.Driver", "postgresql-9.3-1101.jdbc3.jar")
 

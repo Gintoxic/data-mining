@@ -1,55 +1,31 @@
-
-directory<-"../Data/singles"
-
-files<-dir(directory)
+files<-dir("../Data/singles")
 
 
-#curfile<-paste0(directory, "/",files[1])
+
+
+
 #text <- readLines(curfile,encoding="UTF-8")
 #readLines(curfile,encoding="ANSI")
 
 pmatch("#Vorname", text) # returns 2
-strlist<-c("#Anrede: ",
-           "#Vorname: ", 
-           "#Nachname: ", 
-           "#Strasse: ",
-           "#PLZ: ",
-           "#Ort: ",
-           "#Land: ", 
-           "#Tel: ",
-           "#Email: ",
-           
-           "#Anspruch: ",
-           "#Abflugtag: ",
-           "#Abflugmonat: ",
-           "#Abflugjahr: ",
-           "#Abflugstunde: ",
-           "#Abflugminute: ",
-           "#Abflugort: ",
-           "#Ankunfttag: ",
-           "#Ankunftmonat: ",
-           "#Ankunftjahr: ",
-           "#Ankunftstunde: ",
-           "#Ankunftminute: ",
-           "#Planmäßiger Zielort: ",
-           "#Tatsächlicher_Ankunfttag: ",
-           "#Tatsächlicher_Ankunftmonat: ",
-           "#Tatsächliches_Ankunftjahr: ",
-           "#Tatsächliche_Ankunftstunde: ",
-           "#Tatsächliche_Ankunftminute: ",
-           "#Tatsächlicher_Ankunftort: ",
-           "#Kontoinhaber: ","#IBAN: ", "#BIC: "
-        )
+strlist<-c("Anrede: ","#Vorname: ", "#Nachname: ", "#Strasse: ","#PLZ: ","#Ort: ","#Land: ", "#Tel: ","#Email: ","#Anspruch: ",
+           "#Flugdatum: ", "#Flugnummer: ", "#Ticket-Nummer: ", "#Abflugort: ","#Planmäßiger_Zielort: ",
+           "#Tatsächlicher_Ankunftsort: ",  "#Planmäßige_Abflugszeit: ","#Planmäßige_Ankunftszeit: ","#Tatsächliche_Ankunftszeit: ", 
+           "#Kontoinhaber: ","#IBAN: ", "#BIC: ")
+enclist<-c("ANSI", "ANSI", "ANSI", "ANSI", "UTF-8", "ANSI","UTF-8")
 
 
+#Planmäßige_Abflugszeit: 13:35
+#Planmäßige_Ankunftszeit: 22:05 (11.07.2015)
+#Tatsächliche_Ankunftszeit: 04:20 (12.07.2015)
 
-mt<-matrix(nrow = 2,ncol = 31, data = "")
 
+mt<-matrix(nrow = 7,ncol = 22, data = "")
 
 for (j in 1:length(files))
 {
   curfile<-paste("../Data/singles/", files[j], sep="")
-  text <- readLines(curfile,encoding="UTF-8")
+  text <- readLines(curfile,encoding=enclist[j])
 
   for (i in 1:length(strlist))
   {
@@ -64,9 +40,6 @@ for (j in 1:length(files))
   
 }
 
-
-####################################################################
-
 cnames<-c("Anrede","Vorname", "Nachname", "Strasse","PLZ","Ort","Land", "Tel","Email","Anspruch",
            "Flugdatum", "Flugnummer", "Ticket_Nummer", "Abflugort","Plan_Zielort",
            "Tats_Ankunftsort",  "Plan_Abflugszeit","Plan_Ankunftszeit","Tats_Ankunftszeit", 
@@ -76,21 +49,6 @@ cnames<-c("Anrede","Vorname", "Nachname", "Strasse","PLZ","Ort","Land", "Tel","E
 fr<-as.data.frame(mt, stringsAsFactors = F)
 colnames(fr)<-tolower(cnames)
 fr$import_counter<-1:length(files)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 library(RJDBC)
 
